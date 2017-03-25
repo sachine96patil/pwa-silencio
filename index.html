@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <link rel="canonical" href="https://himanshoe.pythonanywhere.com/arrivals">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silencio</title>
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Web Starter Kit">
+    <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+    <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
+    <!-- Color the status bar on mobile devices -->
+    <meta name="theme-color" content="#2F3BA2">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <!-- Material Design icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+    <!-- Material Design Lite page styles:
+    You can choose other color schemes from the CDN, more info here http://www.getmdl.io/customize/index.html
+    Format: material.color1-color2.min.css, some examples:
+    material.red-teal.min.css
+    material.blue-orange.min.css
+    material.purple-indigo.min.css
+    -->
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+
+    <!-- Your styles -->
+    <link rel="stylesheet" href="styles/main.css">
+  </head>
+  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base" onload="getLocation()">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+          <h3>Silencio</h3>
+        </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+          <a href="#overview" class="mdl-layout__tab is-active" onclick="change_color (this);"><img src="styles/departure.ico" style="display: inline; height: 100%; -webkit-filter: invert (1); filter: invert (1);"/></a>
+          <a href="#features" class="mdl-layout__tab" onclick="change_color (this);">Arrivals</a>
+          <a href="#features" class="mdl-layout__tab" onclick="change_color (this);">Offers</a>
+          <a href="#features" class="mdl-layout__tab" onclick="change_color (this);">Feedback</a>
+          <!--<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
+            <i class="material-icons" role="presentation">add</i>
+            <span class="visuallyhidden">Add</span>
+          </button> -->
+        </div>
+      </header>
+      <main class="mdl-layout__content">
+        <div class="mdl-layout__tab-panel is-active" id="overview">
+            <div id="departure_list">
+         
+            </div>
+        
+          
+        </div>
+        <div class="mdl-layout__tab-panel" id="features">
+       
+        </div>
+
+      </main>
+    </div>
+
+    <script src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <!-- build:js scripts/main.min.js -->
+    <script src="scripts/main.js"></script>
+    <script src="scripts/jquery-3.2.0.min.js"></script>
+    
+    <script>
+        $.ajax ({
+            //url: "https://himanshoe.pythonanywhere.com/arrival",
+            url: "scripts/temp.json",
+            success: function (result) {
+                result.Arrivals.forEach (function (value) {
+                    
+                    if (value.delay != "OnTime") {
+                        value.delay = "Late by "+value.delay;
+                    }
+                    
+                    var section_start = "<section class=\"section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp\" style=\"min-height: 0px;\">";
+                    
+                    var new_card_header = "<header class=\"mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone\" style=\"min-height: 0px;\">"+
+                        "<div style='background-image: url(\""+value.logo+"\"); background-size: cover; background-repeat: round; background-origin: initial; height: 100%; width: 100%;'></div>"+
+                        "</header>";
+                    
+                    var new_card_body = "<div class=\"mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone\" style=\"min-height: 0px;\">"+
+                        "<div class=\"mdl-card__supporting-text\" style=\"margin: 20px;\">"+
+                        "<h4><span style=\"text-transform: uppercase;\">"+value.flightNo+"</span> - ("+value.source+" &rarr; "+value.destination+")</h4>"+
+                        "Departing from <strong>Gate "+value.gate+"</strong><br />"+
+                        "ETA: <strong>"+value.eta+" Hours (Status: "+value.delay+")</strong>"+
+                        "</div>"+
+                        "</div>";
+                    
+                    var section_end = "</section>";
+                    
+                    $("#departure_list").append (section_start+new_card_header+new_card_body+section_end);
+                    
+                });
+            }
+        });
+        
+        function change_color (element) {
+           // event.preventdefault ();
+            console.log (element);
+            //$(".is-active img").css ("-webkit-filter", "").css ("filter", "");
+            //$().css ("-webkit-filter", "invert (1)").css ("filter", "invert (1)");
+            //$(element).trigger('click');
+            //$(element).children().first().css ("-webkit-filter", "invert (1)").css ("filter", "invert (1)");
+        }
+       /* 
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else { 
+                console.log ("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            console.log ("Latitude: " + position.coords.latitude);
+            console.log ("Longitude: " + position.coords.longitude);
+            var condition = true;
+            if (condition) {
+                $("body").html ("").append ("Not near the Airport");
+            }
+        }
+        */
+    </script>
+
+    
+  </body>
+</html>

@@ -1,0 +1,93 @@
+{
+  "Arrivals": [
+    {
+      "company": "Indigo", 
+      "delay": "20 min", 
+      "destination": "BOM", 
+      "eta": "2200", 
+      "flightNo": "su254", 
+      "gate": "T3", 
+      "id": "1", 
+      "logo": "http://downloads.andyroid.net/website/v2//wp-content/uploads/2015/07/SpiceJet-icon.png", 
+      "source": "DEL"
+    }, 
+    {
+      "company": "GoAir", 
+      "delay": "OnTime", 
+      "destination": "BOM", 
+      "eta": "1600", 
+      "flightNo": "se254", 
+      "gate": "D1", 
+      "id": "2", 
+      "logo": "https://upload.wikimedia.org/wikipedia/en/8/86/GoAir_Logo.png", 
+      "source": "BLR"
+    }, 
+    {
+      "company": "Indigo", 
+      "delay": "2 min", 
+      "destination": "PUNE", 
+      "eta": "0200", 
+      "flightNo": "6e251", 
+      "gate": "A2", 
+      "id": "3", 
+      "logo": "http://2.bp.blogspot.com/-mnOq2LOqQfI/VpmfAnagvCI/AAAAAAAAGD0/VmhLSrAsf7o/s1600/Logo%2BAirAsia%2B%2528small%2529.png", 
+      "source": "GOA"
+    }, 
+    {
+      "company": "GOAIR", 
+      "delay": "OnTime", 
+      "destination": "CCU", 
+      "eta": "0010", 
+      "flightNo": "6e222", 
+      "gate": "A1", 
+      "id": "4", 
+      "logo": "https://upload.wikimedia.org/wikipedia/en/8/86/GoAir_Logo.png", 
+      "source": "GHY"
+    }, 
+    {
+      "company": "SPICEJET", 
+      "delay": "2 min", 
+      "destination": "JOR", 
+      "eta": "2200", 
+      "flightNo": "VT222", 
+      "gate": "T3", 
+      "id": "5", 
+      "logo": "http://downloads.andyroid.net/website/v2//wp-content/uploads/2015/07/SpiceJet-icon.png", 
+      "source": "IXR"
+    }, 
+    {
+      "company": "Indigo", 
+      "delay": "20 min", 
+      "destination": "BOM", 
+      "eta": "2200", 
+      "flightNo": "su254", 
+      "gate": "T3", 
+      "id": "6", 
+      "logo": "http://downloads.andyroid.net/website/v2//wp-content/uploads/2015/07/SpiceJet-icon.png", 
+      "source": "DEL"
+    }, 
+    {
+      "company": "GoAir", 
+      "delay": "OnTime", 
+      "destination": "BOM", 
+      "eta": "1600", 
+      "flightNo": "se254", 
+      "gate": "D1", 
+      "id": "7", 
+      "logo": "https://upload.wikimedia.org/wikipedia/en/8/86/GoAir_Logo.png", 
+      "source": "BLR"
+    }, 
+    {
+      "company": "Indigo", 
+      "delay": "2 hours", 
+      "destination": "PUNE", 
+      "eta": "0200", 
+      "flightNo": "6E-251", 
+      "gate": "221B", 
+      "id": "8", 
+      "logo": "http://2.bp.blogspot.com/-mnOq2LOqQfI/VpmfAnagvCI/AAAAAAAAGD0/VmhLSrAsf7o/s1600/Logo%2BAirAsia%2B%2528small%2529.png", 
+      "pnr": "i7jivz", 
+      "source": "GOA"
+    }
+  ]
+}
